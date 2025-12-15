@@ -15,12 +15,12 @@ weight_hg=$(echo "$pokemon_data" | awk 'NR==3')
 type=$(echo "$pokemon_data" | awk 'NR==4')
 
 # Convert units (decimeters to meters, hectograms to kilograms)
-height_m=$(echo "$height_dm" | awk '{ printf "%.1f", $1 / 10 }')
-weight_kg=$(echo "$weight_hg" | awk '{ printf "%.0f", $1 / 10 }')
+height_m=$(echo "$height" | awk '{ printf "%.1f", $1 / 10 }')
+weight_kg=$(echo "$weight" | awk '{ printf "%.0f", $1 / 10 }')
 
 # Capitalize name and type
-name=$(echo "$name" | sed 's/.*/\u&/')
-type=$(echo "$type" | sed 's/.*/\u&/')
+name=$(echo "$name" | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
+type=$(echo "$type" | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
 
 # Output formatted sentence
 echo "$name is of type $type, weighs ${weight_kg}kg, and is ${height_m}m tall."
