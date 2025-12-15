@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# kill
 
 API_URL="https://pokeapi.co/api/v2/pokemon"
 OUTPUT_DIR="pokemon_data_parallel"
